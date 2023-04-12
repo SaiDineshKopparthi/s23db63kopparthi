@@ -2,7 +2,8 @@ extends layout
 
 block content
   h1= title
-  - var results = [{"car_name":"200", "car_make":"Chrysler", "car_cost":8000},{"car_name":"Silverado", "car_make":"Chevrolet", "car_cost":28000},{"car_name":"RB19", "car_make":"Redbull", "car_cost":2000000000}]
+  //- - var results = [{"car_name":"200", "car_make":"Chrysler", "car_cost":8000},{"car_name":"Silverado", "car_make":"Chevrolet", "car_cost":28000},{"car_name":"RB19", "car_make":"Redbull", "car_cost":2000000000}]
+  - var results = results 
   div.container-fluid
     div.row
       each value,index in results
