@@ -70,20 +70,39 @@ let instance1 = new Car({car_name:"200", car_make:'chrysler', car_cost:8000});
 let instance2 = new Car({car_name:"Silverado", car_make:'chevrolet', car_cost:28000});
 let instance3 = new Car({car_name:"RB19", car_make:'Redbull', car_cost:2000000000});
 
-instance1.save().then(function(err,doc) {
-  console.log("First object saved")
-  if(err) return console.error(err);
+// instance1.save().then(function(err,doc) {
+//   console.log("First object saved")
+//   if(err) return console.error(err);
+// });
+
+// instance2.save().then( function(err,doc) {
+//   console.log("Second object saved")
+//   if(err) return console.error(err);
+// });
+
+// instance3.save().then(function(err,doc) {
+//   console.log("Third object saved")
+//   if(err) return console.error(err); 
+// });
+
+instance1.save().then(doc=>{
+  console.log("First object saved")}
+  ).catch(err=>{
+  console.error(err)
 });
 
-instance2.save().then( function(err,doc) {
-  console.log("Second object saved")
-  if(err) return console.error(err);
+instance2.save().then(doc=>{
+  console.log("Second object saved")}
+  ).catch(err=>{
+  console.error(err)
 });
 
-instance3.save().then(function(err,doc) {
-  console.log("Third object saved")
-  if(err) return console.error(err); 
+instance3.save().then(doc=>{
+  console.log("Third object saved")}
+  ).catch(err=>{
+  console.error(err)
 });
+
 }
 
 
