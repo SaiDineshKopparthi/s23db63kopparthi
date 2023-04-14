@@ -77,6 +77,26 @@ exports.car_delete = function (req, res) {
 };
 
 // Handle Car update form on PUT.
-exports.car_update_put = function (req, res) {
-    res.send('NOT IMPLEMENTED: Car update PUT' + req.params.id);
+// exports.car_update_put = function (req, res) {
+//     res.send('NOT IMPLEMENTED: Car update PUT' + req.params.id);
+// };
+
+exports.car_update_put = async function (req, res) {
+    console.log(`update on id ${req.params.id} with body
+    ${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await Car.findById(req.params.id)
+        // Do updates of properties
+        if (req.body.car_name)
+            toUpdate.car_name = req.body.car_name;
+        if (req.body.car_make) toUpdate.car_make = req.body.car_make;
+        if (req.body.car_cost) toUpdate.car_cost = req.body.car_cost;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}: Update for id ${req.params.id}
+    failed`);
+    }
 };
