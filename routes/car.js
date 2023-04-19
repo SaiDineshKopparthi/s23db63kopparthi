@@ -17,4 +17,7 @@ router.get('/', car_controlers.car_view_all_Page );
 /* GET detail car page */
 router.get('/detail', car_controlers.car_view_one_Page);
 
+/* GET create car page */
+router.get('/create', car_controlers.car_create_Page);
+
 module.exports = router;
