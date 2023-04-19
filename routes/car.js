@@ -13,4 +13,8 @@ const car_controlers= require('../controllers/car');
 var router = express.Router();
 /* GET costumes */
 router.get('/', car_controlers.car_view_all_Page );
+
+/* GET detail car page */
+router.get('/detail', car_controlers.car_view_one_Page);
+
 module.exports = router;

@@ -72,10 +72,20 @@ exports.car_create_post = async function (req, res) {
 };
 
 // Handle Car delete form on DELETE.
-exports.car_delete = function (req, res) {
-    res.send('NOT IMPLEMENTED: Car delete DELETE ' + req.params.id);
+// exports.car_delete = function (req, res) {
+//     res.send('NOT IMPLEMENTED: Car delete DELETE ' + req.params.id);
+// };
+exports.car_delete = async function (req, res) {
+    console.log("delete " + req.params.id)
+    try {
+        result = await Car.findByIdAndDelete(req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": Error deleting ${err}}`);
+    }
 };
-
 // Handle Car update form on PUT.
 // exports.car_update_put = function (req, res) {
 //     res.send('NOT IMPLEMENTED: Car update PUT' + req.params.id);
@@ -98,5 +108,21 @@ exports.car_update_put = async function (req, res) {
         res.status(500)
         res.send(`{"error": ${err}: Update for id ${req.params.id}
     failed`);
+    }
+};
+
+
+
+// Handle a show one view with id specified by query
+exports.car_view_one_Page = async function (req, res) {
+    console.log("single view for id " + req.query.id)
+    try {
+        result = await Car.findById(req.query.id)
+        res.render('cardetail',
+            { title: 'Car Detail', toShow: result });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
     }
 };
