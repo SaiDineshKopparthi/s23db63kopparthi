@@ -3,20 +3,23 @@ extends layout
 block content
   h1= title
 
-  - let carid = toShow._id
-  - let car_name = toShow.car_name
-  - let car_make = toShow.car_make
-  - let car_cost = toShow.car_cost
-  div
-    div.row
-      div(class='carAttr mr-3') Car ID is:
-      div #{carid}
-    div.row
-      div(class='carAttr mr-3') Car Name is:
-      div #{car_name}
-    div.row
-      div(class='carAttr mr-3') Car Make is:
-      div #{car_make}
-    div.row
-      div(class='carAttr mr-3') Car Cost is:
-      div #{car_cost}
+  if (toShow == null)
+    h2 No instance to Show to details 
+  else
+    - let carid = toShow._id
+    - let car_name = toShow.car_name
+    - let car_make = toShow.car_make
+    - let car_cost = toShow.car_cost
+    div
+      div.row
+        div(class='carAttr mr-3') Car ID is:
+        div #{carid}
+      div.row
+        div(class='carAttr mr-3') Car Name is:
+        div #{car_name}
+      div.row
+        div(class='carAttr mr-3') Car Make is:
+        div #{car_make}
+      div.row
+        div(class='carAttr mr-3') Car Cost is:
+        div #{car_cost}
