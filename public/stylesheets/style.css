@@ -9,5 +9,15 @@ a {
 
 .carAttr {
   background-color: aquamarine;
+  width: 120px;
+}
+
+.carValue{
+  background-color: turquoise;
   width: 200px;
+}
+
+.carHeading{
+  background-color: teal;
+  width: 180px;
 }

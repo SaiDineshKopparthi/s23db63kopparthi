@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1= title
+  h1(class='carHeading')= title
 
   if (toShow == null)
     h2 No instance to Show to details 
@@ -13,13 +13,16 @@ block content
     div
       div.row
         div(class='carAttr mr-3') Car ID is:
-        div #{carid}
+        div(class='carValue') #{carid}
+      <br/>
       div.row
         div(class='carAttr mr-3') Car Name is:
-        div #{car_name}
+        div(class='carValue') #{car_name}
+      <br/>
       div.row
         div(class='carAttr mr-3') Car Make is:
-        div #{car_make}
+        div(class='carValue') #{car_make}
+      <br/>
       div.row
         div(class='carAttr mr-3') Car Cost is:
-        div #{car_cost}
+        div(class='carValue') #{car_cost}
