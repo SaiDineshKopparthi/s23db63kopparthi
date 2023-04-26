@@ -1,25 +1,34 @@
 extends layout
 
 block content
-  h1= title
-  p This is #{title}
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/car") Take me to Cars
+    br
+    a(href="/logout") Logout
+  //- h1= title
+  //- p This is #{title}
 
-  button(
-    type='button',
-    class="btn btn-outline-success",
-    onclick="doReduce()"
-  ) Press Me
-  br
-  div(id="reduce") Reduce the value
-  br
-  script.
-    var count=20
-    var change=-1
-    function doReduce(){
-    reducediv = document.getElementById('reduce')
-    count += change
-    change--
-    reducediv.innerHTML=`Count ${count} with change ${change}` 
-    }
+  //- button(
+  //-   type='button',
+  //-   class="btn btn-outline-success",
+  //-   onclick="doReduce()"
+  //- ) Press Me
+  //- br
+  //- div(id="reduce") Reduce the value
+  //- br
+  //- script.
+  //-   var count=20
+  //-   var change=-1
+  //-   function doReduce(){
+  //-   reducediv = document.getElementById('reduce')
+  //-   count += change
+  //-   change--
+  //-   reducediv.innerHTML=`Count ${count} with change ${change}` 
+  //-   }
 
-  a(href='https://s23wb63kopparthi.onrender.com/car') Car
+  //- a(href='https://s23wb63kopparthi.onrender.com/car') Car
