@@ -1,19 +1,28 @@
 extends layout
 
 block content
+  a(href='/car/create') Click here to create a new Car object
+  <br>
+  <br>
   h1= title
   //- - var results = [{"car_name":"200", "car_make":"Chrysler", "car_cost":8000},{"car_name":"Silverado", "car_make":"Chevrolet", "car_cost":28000},{"car_name":"RB19", "car_make":"Redbull", "car_cost":2000000000}]
   - var results = results 
   div(class="container-fluid")
     div(class="row m-1")
       each value,index in results
-        - let destination = `dispatch(\"/car/update?id=${value._id}\")`
-        div.col-sm-2(onclick=`buy(${index})`) Car name: #{value.car_name} <br> Car make: #{value.car_make} <br> Car cost: #{value.car_cost}
-          button.btn( class="btn-primary ml-1", onclick= destination) Update
-  script.
-      function buy(index){
-         alert("You purchased item "+(index+1))
-      }
+        - let update = `dispatch(\"/car/update?id=${value._id}\")`
+        - let details = `dispatch(\"/car/detail?id=${value._id}\")`
+        - let deleteObj = `dispatch(\"/car/delete?id=${value._id}\")`
+        div.col-sm-2 Car name: #{value.car_name} <br> Car make: #{value.car_make} <br> Car cost: #{value.car_cost}
+          <br>
+          <br>
+          button.btn( class="btn-primary ml-1", onclick= update) Update
+          <br>
+          <br>
+          button.btn( class="btn-primary ml-1", onclick= details) Show Details
+          <br>
+          <br>
+          button.btn( class="btn-primary ml-1", onclick= deleteObj) Delete
 
   script.
     function dispatch(path){
